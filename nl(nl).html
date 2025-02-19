@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>当前农历日期</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        #lunar-date {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .highlight {
+            color: #c00;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="lunar-date">
+        <p>正在加载农历日期...</p>
+    </div>
+
+    <!-- 加载 nl.js 并检查是否成功 -->
+    <script src="nl.js" onload="console.log('nl.js 加载成功')" onerror="console.error('nl.js 加载失败')"></script>
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 检查 calendar 对象是否存在
+            if (typeof calendar === 'undefined') {
+                console.error('calendar 对象未定义，请检查 nl.js 是否正确加载');
+                document.getElementById('lunar-date').innerHTML = '<p style="color: red;">加载农历数据失败，请检查控制台</p>';
+                return;
+            }
+
+            // 获取当前日期
+            const today = new Date();
+            const y = today.getFullYear();
+            const m = today.getMonth() + 1; // 月份从0开始需+1
+            const d = today.getDate();
+            
+            // 调用农历转换方法
+            const lunarData = calendar.solar2lunar(y, m, d);
+            
+            // 检查农历数据是否有效
+            if (lunarData === -1) {
+                console.error('农历日期转换失败，请检查日期范围');
+                document.getElementById('lunar-date').innerHTML = '<p style="color: red;">农历日期转换失败，请检查日期范围</p>';
+                return;
+            }
+            
+            // 组合显示内容
+            const lunarHtml = `
+                <p class="highlight">公历日期：${y}年${m}月${d}日</p>
+                <p>农历日期：${lunarData.lYear}年 
+                <span class="highlight">${lunarData.IMonthCn}</span>
+                ${lunarData.IDayCn}</p>
+                <p>生肖：${lunarData.Animal}年</p>
+                <p>天干地支：${lunarData.gzYear}年 ${lunarData.gzMonth}月 ${lunarData.gzDay}日</p>
+                ${lunarData.isTerm ? `<p>节气：${lunarData.Term}</p>` : ''}
+                <p>星座：${lunarData.astro}</p>
+            `;
+            
+            // 更新页面内容
+            document.getElementById('lunar-date').innerHTML = lunarHtml;
+        });
+    </script>
+</body>
+</html>
