@@ -19,8 +19,6 @@
     ],
     "rules": [
       { "outbound": "any", "server": "defaultDns", "disable_cache": true },
-      { "clash_mode": "direct", "server": "localDns" },
-      { "clash_mode": "global", "server": "proxyDns" },
       { "rule_set": "geosite-cn", "server": "localDns" },
       { "rule_set": "geosite-geolocation-!cn", "server": "proxyDns" }
     ],
@@ -45,7 +43,7 @@
   { "tag": "🎵 TikTok", "type": "selector", "outbounds": ["🚀 节点选择", "♻️ 自动选择",  "🇯🇵 日本自动", "🇺🇲 美国自动", "🐸 手动切换"] },
   { "tag": "🎵 Spotify", "type": "selector", "outbounds": ["🚀 节点选择", "♻️ 自动选择",  "🇯🇵 日本自动", "🇺🇲 美国自动", "🐸 手动切换"] },
   { "tag": "📲 Telegram", "type": "selector", "outbounds": ["🚀 节点选择", "♻️ 自动选择",  "🇯🇵 日本自动", "🇺🇲 美国自动", "🐸 手动切换"] },
-  { "tag": "🍏 Apple", "type": "selector", "outbounds": ["🎯 全球直连", "🇯🇵 日本节点", "🇺🇲 美国节点"] },
+  { "tag": "🍏 Apple", "type": "selector", "outbounds": ["🎯 全球直连", "🚀 节点选择", "♻️ 自动选择","🇯🇵 日本节点", "🇺🇲 美国节点"] },
   { "tag": "🐠 漏网之鱼", "type": "selector", "outbounds": ["🚀 节点选择","🎯 全球直连"] },
   { "tag": "🐸 手动切换", "type": "selector", "outbounds": ["{all}"]},
   { "tag": "🇯🇵 日本自动", "type": "urltest", "outbounds": ["{all}"], "filter": { "action": "include", "keywords": ["🇯🇵|JP|jp|日本|日|Japan"] }, "url": "http://www.gstatic.com/generate_204", "interval": "300", "tolerance": 50 },
