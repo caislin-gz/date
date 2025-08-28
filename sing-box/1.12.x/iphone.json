@@ -33,7 +33,7 @@
     {"tag": "🎮 Steam", "type": "selector", "outbounds": ["🇯🇵 日本自动", "🇺🇲 美国自动", "🐸 手动选择","🎯 全球直连"]},
     {"tag": "🪟 Microsoft", "type": "selector", "outbounds": ["🇯🇵 日本自动", "🇺🇲 美国自动", "🐸 手动选择","🎯 全球直连"]},
     {"tag": "🐬 OneDrive", "type": "selector", "outbounds": ["🇯🇵 日本自动", "🇺🇲 美国自动", "🐸 手动选择","🎯 全球直连"]},
-    {"tag": "🍏 Apple", "type": "selector", "outbounds": ["🎯 全球直连", "🇯🇵 日本自动", "🇺🇲 美国自动","🎯 全球直连"]},
+    {"tag": "🍏 Apple", "type": "selector", "outbounds": ["🎯 全球直连", "🇯🇵 日本自动", "🇺🇲 美国自动"]},
     {"tag": "🐠 漏网之鱼", "type": "selector", "outbounds": ["🚀 默认代理", "🎯 全球直连"]},
     {"tag": "🇯🇵 日本自动", "type": "urltest", "outbounds": ["{all}"], "filter": [{"action": "include", "keywords": ["🇯🇵|JP|jp|日本|日|Japan"]}, {"action": "exclude", "keywords": ["免费"]}], "interval": "2m", "tolerance": 50},
     {"tag": "🇺🇲 美国自动", "type": "urltest", "outbounds": ["{all}"], "filter": [{"action": "include", "keywords": ["🇺🇸|US|us|美国|美|United States"]}, {"action": "exclude", "keywords": ["AUS|RUS|免费"]}], "interval": "2m", "tolerance": 50},
